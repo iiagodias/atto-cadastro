@@ -6,14 +6,14 @@
 
                     <div class="sidenav-menu-heading">Opções</div>
                     <!-- Sidenav Accordion (Dashboard)-->
-                    <a class="nav-link " href="javascript:void(0);" data-bs-target="#collapseDashboards" aria-expanded="true" aria-controls="collapseDashboards">
+                    <a class="nav-link @if (in_array(Route::currentRouteName(), ['farmers.list'])) active @endif" href="javascript:void(0);" data-bs-target="#collapseDashboards" aria-expanded="true" aria-controls="collapseDashboards">
                         <div class="nav-link-icon"><i data-feather="user"></i></div>
                          Agricultores
                         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div id="collapseDashboards" data-bs-parent="#accordionSidenav">
                         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-                            <a class="nav-link" href="dashboard-1.html">Listar</a>
+                            <a class="nav-link @if (Route::is('farmers.list')) active @endif" href="{{ route('farmers.list')}}">Listar</a>
                         </nav>
                     </div>
                 </div>
@@ -22,10 +22,7 @@
     </div>
     <div id="layoutSidenav_content">
         <main>
-            <!-- Main page content-->
-            <div class="container-xl px-4 mt-4">
-                @yield('content')
-            </div>
+            @yield('content')
         </main>
     </div>
 </div>

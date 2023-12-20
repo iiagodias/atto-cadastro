@@ -4,6 +4,12 @@ window.addEventListener('DOMContentLoaded', event => {
 
     const datatablesSimple = document.getElementById('datatablesSimple');
     if (datatablesSimple) {
-        new simpleDatatables.DataTable(datatablesSimple);
+        new simpleDatatables.DataTable(datatablesSimple, {
+            labels: {
+                placeholder: "Buscar...",
+                perPage: "entradas por página",
+                info: "Mostrando os registos {start} a {end} num total de {rows}"
+            }
+        });
     }
 });
