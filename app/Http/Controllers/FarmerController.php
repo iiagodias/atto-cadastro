@@ -47,7 +47,7 @@ class FarmerController extends Controller
                 'cpf_cnpj' => 'required|cpf_ou_cnpj',
                 'city' => 'required',
                 'state' => 'required',
-                'cell_phone' => 'nullable|min:14'
+                'cell_phone' => 'nullable|celular_com_ddd'
             ]);
 
             $this->farmerService->store($request->all());
@@ -75,7 +75,7 @@ class FarmerController extends Controller
                 'cpf_cnpj' => 'required|cpf_ou_cnpj',
                 'city' => 'required',
                 'state' => 'required',
-                'cell_phone' => 'nullable|min:14'
+                'cell_phone' => 'nullable|celular_com_ddd'
             ]);
 
             $this->farmerService->update($id, $request->all());

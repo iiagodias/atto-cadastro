@@ -63,12 +63,9 @@
                                 <td>{{$farmer->city}}</td>
                                 <td>{{$farmer->state}}</td>
                                 <td>
-
-                                    {!! Form::model(null, ['route' => ['farmers.delete', $farmer->id]]) !!}
-                                        @method('delete')
-                                        <a class="btn btn-blue btn-icon" href="{{ route('farmers.edit', ['id' => $farmer->id]) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar agricultor"><i data-feather="edit"></i></a>
-                                        <button type="submit" class="btn btn-red btn-icon" href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir agricultor"><i data-feather="trash-2" ></i></button>
-                                    {!! Form::close() !!}
+                                    <x-modal-confirmation :farmer="$farmer"/>
+                                    <a class="btn btn-blue btn-icon" href="{{ route('farmers.edit', ['id' => $farmer->id]) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar agricultor"><i data-feather="edit"></i></a>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{$farmer->id}}" class="btn btn-red btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir agricultor"><i data-feather="trash-2" ></i></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -76,6 +73,7 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
 @endsection
