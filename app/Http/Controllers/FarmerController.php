@@ -10,4 +10,9 @@ class FarmerController extends Controller
     {
         return view('features.farmers.list');
     }
+
+    public function create()
+    {
+        return view('features.farmers.form');
+    }
 }

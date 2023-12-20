@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FarmerController::class, 'index'])->name("farmers.list");
+Route::get('/create', [FarmerController::class, 'create'])->name("farmers.create");

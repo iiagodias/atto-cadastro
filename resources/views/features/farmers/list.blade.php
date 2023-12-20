@@ -13,7 +13,7 @@
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
-                        <a class="btn btn-sm btn-light text-primary" href="blog-management-create-post.html">
+                        <a class="btn btn-sm btn-light text-primary" href="{{ route('farmers.create')}}">
                             <i class="me-1" data-feather="plus"></i>
                             Cadastrar
                         </a>
@@ -58,8 +58,8 @@
                             <td>Augustinopolis</td>
                             <td>Tocantins</td>
                             <td>
-                                <a class="btn btn-blue btn-icon" href="blog-management-edit-post.html"><i data-feather="edit"></i></a>
-                                <a class="btn btn-red btn-icon" href="#!"><i data-feather="trash-2"></i></a>
+                                <a class="btn btn-blue btn-icon" href="blog-management-edit-post.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar agricultor"><i data-feather="edit"></i></a>
+                                <a class="btn btn-red btn-icon" href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir agricultor"><i data-feather="trash-2" ></i></a>
                             </td>
                         </tr>
                     </tbody>
