@@ -8,7 +8,8 @@ window.addEventListener('DOMContentLoaded', event => {
             labels: {
                 placeholder: "Buscar...",
                 perPage: "entradas por página",
-                info: "Mostrando os registos {start} a {end} num total de {rows}"
+                info: "Mostrando os registos {start} a {end} num total de {rows}",
+                noRows:'Nenhum registro cadastrado.'
             }
         });
     }

@@ -7,7 +7,7 @@
                     <div class="sidenav-menu-heading">Opções</div>
                     <!-- Sidenav Accordion (Dashboard)-->
                     <a
-                     class="nav-link @if (in_array(Route::currentRouteName(), ['farmers.list', 'farmers.create'])) active @endif"
+                     class="nav-link @if (in_array(Route::currentRouteName(), ['farmers.list', 'farmers.create', 'farmers.edit'])) active @endif"
                      href="javascript:void(0);"
                      data-bs-toggle="collapse"
                      data-bs-target="#collapseDashboards"

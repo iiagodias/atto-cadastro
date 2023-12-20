@@ -26,6 +26,9 @@
     <div class="container-fluid px-4">
         <div class="card">
             <div class="card-body">
+                @if (Session::has('msg'))
+                    <div class="alert alert-success alert-solid" role="alert">{{Session::get('msg')}}</div>
+                @endif
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
@@ -50,18 +53,26 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>Atto Sementes LTDA</td>
-                            <td>Atto Semente</td>
-                            <td>000154544554-54</td>
-                            <td>(91) 982619212</td>
-                            <td>Augustinopolis</td>
-                            <td>Tocantins</td>
-                            <td>
-                                <a class="btn btn-blue btn-icon" href="blog-management-edit-post.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar agricultor"><i data-feather="edit"></i></a>
-                                <a class="btn btn-red btn-icon" href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir agricultor"><i data-feather="trash-2" ></i></a>
-                            </td>
-                        </tr>
+
+                        @foreach($farmers as $farmer)
+                            <tr>
+                                <td>{{$farmer->corporate_reason}}</td>
+                                <td>{{$farmer->fantasy_name}}</td>
+                                <td>{{$farmer->cpf_cnpj}}</td>
+                                <td>{{$farmer->cell_phone}}</td>
+                                <td>{{$farmer->city}}</td>
+                                <td>{{$farmer->state}}</td>
+                                <td>
+
+                                    {!! Form::model(null, ['route' => ['farmers.delete', $farmer->id]]) !!}
+                                        @method('delete')
+                                        <a class="btn btn-blue btn-icon" href="{{ route('farmers.edit', ['id' => $farmer->id]) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar agricultor"><i data-feather="edit"></i></a>
+                                        <button type="submit" class="btn btn-red btn-icon" href="#!" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir agricultor"><i data-feather="trash-2" ></i></button>
+                                    {!! Form::close() !!}
+                                </td>
+                            </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>

@@ -37,36 +37,75 @@
                 <div class="card mb-4">
                     <div class="card-header">Formulário</div>
                     <div class="card-body">
-                        <form >
+                        @if (Session::has('msg'))
+                            <div class="alert alert-warning alert-solid" role="alert">{{Session::get('msg')}}</div>
+                        @endif
+                        @if(isset($farmer->id))
+                            {!! Form::model($farmer ?? null, ['route' => ['farmers.update', $farmer->id]]) !!}
+                            @method('put')
+                        @else
+                            @method('post')
+                            {!! Form::model(null, ['route' => 'farmers.store']) !!}
+                        @endif
                             <div class="mb-3">
-                                <label for="corporateReason">Razão social</label>
-                                <input class="form-control" name="corporateReason" id="corporateReason" type="text" placeholder="Razão social">
+                                <label for="corporate_reason">Razão social</label>
+                                {!! Form::text('corporate_reason', null, ['class' => $errors->getBag('default')->has('corporate_reason') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Razão social', 'maxlength' => 255]) !!}
+                                @error('corporate_reason')
+                                    <div class="invalid-feedback">
+                                        Preencha o campo Razão social
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="fantasyName">Nome Fantasia</label>
-                                <input class="form-control" name="fantasyName" id="fantasyName" type="text" placeholder="Nome fantasia">
+                                <label for="fantasy_name">Nome Fantasia</label>
+                                {!! Form::text('fantasy_name', null, ['class' => $errors->getBag('default')->has('fantasy_name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Nome Fantasia', 'maxlength' => 255]) !!}
+                                @error('fantasy_name')
+                                    <div class="invalid-feedback">
+                                        Preencha o campo Nome Fantasia
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="numberSocial">CNPJ/CPF</label>
-                                <input class="form-control" name="numberSocial" id="numberSocial" type="text" placeholder="000.000.000-00">
+                                <label for="cpf_cnpj">CNPJ/CPF</label>
+                                {!! Form::text('cpf_cnpj', null, ['id' => 'cpfcnpj', 'class' => $errors->getBag('default')->has('cpf_cnpj') ? 'form-control is-invalid' : 'form-control', 'placeholder' => '000.000.000-00', 'maxlength' => 255]) !!}
+                                @error('cpf_cnpj')
+                                    <div class="invalid-feedback">
+                                        Preencha o campo CNPJ/CPF
+                                    </div>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="cellphone">Celular</label>
-                                <input class="form-control" name="cellphone" id="cellphone" type="text" placeholder="(00) 00000-0000">
+                                <label for="cell_phone">Celular</label>
+                                {!! Form::text('cell_phone', null, ['id' => 'cell_phone','class' => $errors->getBag('default')->has('cell_phone') ? 'form-control is-invalid' : 'form-control', 'placeholder' => '(00) 00000-0000', 'maxlength' => 255]) !!}
+                                @error('cell_phone')
+                                    <div class="invalid-feedback">
+                                        Preencha o campo Celular corretamente
+                                    </div>
+                            @enderror
                             </div>
 
                             <div class="row">
                                 <div class="col-sm mb-3">
                                     <label for="city">Cidade</label>
-                                    <input class="form-control" name="city" id="city" type="text" placeholder="Cidade">
+                                    {!! Form::text('city', null, ['class' => $errors->getBag('default')->has('city') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Cidade', 'maxlength' => 255]) !!}
+                                    @error('city')
+                                        <div class="invalid-feedback">
+                                            Preencha o campo Cidade
+                                        </div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-sm mb-3">
                                     <label for="state">Estado</label>
-                                    <input class="form-control" name="state" id="state" type="text" placeholder="Estado">
+                                    {!! Form::text('state', null, ['class' => $errors->getBag('default')->has('state') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Estado', 'maxlength' => 255]) !!}
+                                    @error('state')
+                                        <div class="invalid-feedback">
+                                            Preencha o campo Estado
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
@@ -78,7 +117,7 @@
                                     @endif
                                 </button>
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </div>
 
@@ -87,4 +126,12 @@
     </div>
 </div>
 
+    @section('scripts')
+        <script>
+            $(document).ready(function(){
+                $('#cell_phone').mask('(00) 0000-0000');
+            });
+
+        </script>
+    @endsection
 @endsection

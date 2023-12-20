@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FarmerController::class, 'index'])->name("farmers.list");
 Route::get('/create', [FarmerController::class, 'create'])->name("farmers.create");
+Route::post('/store', [FarmerController::class, 'store'])->name("farmers.store");
+Route::get('/edit/{id}', [FarmerController::class, 'edit'])->name("farmers.edit");
+Route::put('/update/{id}', [FarmerController::class, 'update'])->name("farmers.update");
+Route::delete('/delete/{id}', [FarmerController::class, 'delete'])->name("farmers.delete");
+
