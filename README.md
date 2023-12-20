@@ -1,13 +1,16 @@
 
-# Demo
-
-![](./demo.gif)
-
 # 👨🏻‍🌾 CRUD - Agricultor Atto Sementes 
 
 
 
 Sistema desenvolvido em Laravel 10.x. Siga os comandos abaixo para executar a aplicação em sua máquina.
+
+Requisitos para rodar o projeto: 
+
+- Composer
+- PHP 8.2 +
+
+
 
 
 ## Rodando localmente
@@ -31,6 +34,11 @@ Instale as dependências
 ```
 
 Copie o .env.example com o nome .env e preencha os dados do seu banco MySQL.
+
+Gere uma key para o projeto
+```bash
+  php artisan key:generate --ansi
+```
 
 Em seguida rode as migrations
 
